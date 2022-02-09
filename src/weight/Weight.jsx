@@ -1,8 +1,9 @@
 import React from 'react';
-// import { useEffect, useState } from "react";
-// import weightDetails from './weightDetails'
+import LatestReadings from './LatestReadings';
 import dateFormat from 'dateformat';
-
+// import Button from '../ui/Button';
+import css from '../ui/Card.module.scss';
+import table from '../ui/table.scss';
 
 const Weight = ({weightInfo}) => {
     // const [dateTime, id, isIrregular, value] = weightInfo
@@ -10,9 +11,11 @@ const Weight = ({weightInfo}) => {
     //  console.log(weightInfo);
     //  console.log(id);
 
+  
+
 const weightId = weightInfo.map(weightdetail => { 
     return (
-            <ul>{weightdetail.id}</ul>
+            <p>{weightdetail.id}</p>
       )
     }
   )
@@ -20,14 +23,14 @@ const weightId = weightInfo.map(weightdetail => {
 
   const weightValue = weightInfo.map(weightdetail => { 
     return (
-            <ul>{parseFloat(weightdetail.value).toFixed(1)}</ul>
+            <p>{parseFloat(weightdetail.value).toFixed(1)}</p>
       )
     }
   )
 
   const dateTime = weightInfo.map(weightdetail => { 
     return (
-            <ul>{dateFormat(weightdetail.dateTime, "mmmm, dS, hh:mm")}</ul>
+            <p>{dateFormat(weightdetail.dateTime, "mmmm, dS, hh:mm")}</p>
       )
     }
   )
@@ -45,14 +48,13 @@ const weightId = weightInfo.map(weightdetail => {
          <div>
             <h1>Weight</h1>
             <br />
-            <div>
+
+            <div className={css.root}>
                 <h3>Your weight readings</h3>
                 <p>These are weight readings that have been recorded for you.</p>
-            </div>
             <br/>
 
             <table>
-                
                     <tr>
                         <th>Date, Time</th>
                         <th>weight</th>
@@ -65,44 +67,11 @@ const weightId = weightInfo.map(weightdetail => {
                         <td>{weightId}</td>
                     </tr>
             </table>
+            </div> 
+            <LatestReadings />
         </div>
     )
 };
 
 
-
-
-
-
 export default Weight;
-
-
-// <table className="table">
-// <tbody>
-//     <tr>
-//         <th> 
-//             <h5 className="date">Date, Time</h5>
-//             <hr/>
-//                 <tr>
-//                     <li>{weightInfo.dateTime}</li>
-//                 </tr>
-//         </th>
-//         <th>
-//             <h5 className="weight">Weigth (lb)</h5>
-//             <hr/>
-//                 <tr>
-//                     <li>{weightInfo.dateTime}</li>
-//                 </tr>
-//         </th>
-//         <th>
-//             <h5 className="goal">Goal Delta</h5>
-//             <hr/>
-//                 <tr>
-//                     <li>{weightInfo.dateTime}</li>
-//                 </tr>
-//         </th>
-//         <hr/>
-//     </tr> 
-//         {/* {weightList} */}
-// </tbody>
-// </table>

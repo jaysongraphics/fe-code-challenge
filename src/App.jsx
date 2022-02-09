@@ -5,6 +5,11 @@ import {Suspense} from 'react';
 import logo from './logo.svg';
 import css from './App.module.scss';
 import Weight from './weight/Weight';
+import LatestReadings from './weight/LatestReadings';
+import OtherReadings from './weight/OtherReadings';
+import Card from "./ui/Card";
+import Button from "./ui/Button";
+
 
 function App() {
 
@@ -17,19 +22,25 @@ function App() {
         .then (weigthData => setWeightInfo(weigthData))
       }, [])
 
-
-
     return (
         <div>
             <header className={css.header}>
                 <img className={css.logo} src={logo} alt="Livongo logo" />
             </header>
+         
             <div role="main" className={css.content}>
                 <Suspense fallback={<div>Loading weight data...</div>}>
-                    <Weight
+                    <Weight 
                          weightInfo={weightInfo}
                     />
+                    <br />
+                    <OtherReadings 
+                    />
+
+                    {/* <LatestReadings 
+                    /> */}
                 </Suspense>
+                
             </div>
             <footer className={css.footer}>
                 <small>
