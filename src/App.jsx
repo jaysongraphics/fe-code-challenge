@@ -1,9 +1,24 @@
+import { useEffect, useState } from "react";
+import React from 'react';
+
 import {Suspense} from 'react';
 import logo from './logo.svg';
 import css from './App.module.scss';
 import Weight from './weight/Weight';
 
 function App() {
+
+    const api = 'http://localhost:9000/api/weights'
+    const [weightInfo, setWeightInfo] = useState([])
+
+    useEffect(()=> {
+        fetch(api)
+        .then (res => res.json())
+        .then (weigthData => setWeightInfo(weigthData))
+      }, [])
+
+
+
     return (
         <div>
             <header className={css.header}>
@@ -11,7 +26,9 @@ function App() {
             </header>
             <div role="main" className={css.content}>
                 <Suspense fallback={<div>Loading weight data...</div>}>
-                    <Weight />
+                    <Weight
+                         weightInfo={weightInfo}
+                    />
                 </Suspense>
             </div>
             <footer className={css.footer}>

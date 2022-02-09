@@ -34,6 +34,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "dateformat": "^5.0.2",
+    "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
