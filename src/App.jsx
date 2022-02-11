@@ -33,14 +33,7 @@ function App() {
                     <Weight 
                          weightInfo={weightInfo}
                     />
-                    <br />
-                    <OtherReadings 
-                    />
-
-                    {/* <LatestReadings 
-                    /> */}
                 </Suspense>
-                
             </div>
             <footer className={css.footer}>
                 <small>

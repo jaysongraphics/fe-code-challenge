@@ -28,6 +28,8 @@ $border-size: 2px;
     border: none;
     outline: none;
     transition: 0.3s;
+    float: right;
+    margin-top: -460px;
 
     &:disabled {
         color: $color-neutral-5;
@@ -53,6 +55,8 @@ $border-size: 2px;
     border-radius: 8px;
     line-height: 1;
     white-space: nowrap;
+    float: right;
+    margin-top: -460px;
 
     &::before {
         opacity: 0;
@@ -72,6 +76,8 @@ $border-size: 2px;
     background-color: $color-primary;
     color: $color-white;
     border: $border-size solid $color-primary;
+    float: right;
+    margin-top: -460px;
 
     &:not([disabled]) {
         &:hover {

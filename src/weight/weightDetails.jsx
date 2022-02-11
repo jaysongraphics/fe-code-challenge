@@ -2,7 +2,7 @@
 
 
 
-const weightDetails = ({}) => {
+const WeightDetails = ({}) => {
     
 
         // const [dateTime, id, isIrregular, value] = weightInfo
@@ -11,4 +11,4 @@ const weightDetails = ({}) => {
 }
 
 
-export default weightDetails;
+export default WeightDetails;

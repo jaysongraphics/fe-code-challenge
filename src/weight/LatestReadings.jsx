@@ -8,9 +8,9 @@ const LatestReadings = () => {
         <div className={css.latest}>
              <h3>Latest Readings</h3>
                 <p></p>
-                
+            <br/>
              <h3>Your Goal</h3>
-             <p></p>
+             <p>175 lb</p>
         </div>
     )
 
