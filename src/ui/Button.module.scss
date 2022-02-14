@@ -29,7 +29,7 @@ $border-size: 2px;
     outline: none;
     transition: 0.3s;
     float: right;
-    margin-top: -460px;
+    margin-top: -80px;
 
     &:disabled {
         color: $color-neutral-5;
@@ -49,6 +49,60 @@ $border-size: 2px;
     }
 }
 
+.rootcancel {
+    font: 500 14px Roboto;
+    color: $color-primary;
+    line-height: 1.375;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+    padding-top: 7px;
+    padding-right: 30px;
+    float: right;
+
+    &:disabled {
+        color: $color-neutral-5;
+        cursor: not-allowed;
+    }
+
+    &:not([disabled]) {
+        &:hover {
+            color: darken($color-primary, 10);
+        }
+    }
+}
+
+.rootsave {
+    font: 500 14px Roboto;
+    background-color: $color-primary;
+    color: $color-white;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+    padding: 8px 13px;
+    text-align: center;
+    border-radius: 6px;
+    color: $color-white;
+    background-color: $color-primary;
+    float: right;
+
+    &:disabled {
+        color: $color-neutral-5;
+        cursor: not-allowed;
+    }
+
+    &:not([disabled]) {
+        &:hover {
+            color: darken($color-neutral-1, 10);
+        }
+    }
+}
+
 .colored {
     padding: 11px 18px;
     text-align: center;
@@ -57,6 +111,28 @@ $border-size: 2px;
     white-space: nowrap;
     float: right;
     margin-top: -460px;
+
+    &::before {
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        width: 0;
+        transition-property: width;
+        line-height: 1;
+    }
+}
+
+.coloredsave {
+    padding: 10px 12px;
+    text-align: center;
+    border-radius: 6px;
+    color: $color-white;
+    background-color: $color-primary;
+
 
     &::before {
         opacity: 0;
@@ -99,6 +175,33 @@ $border-size: 2px;
     }
 }
 
+.primaryy {
+    background-color: $color-primary;
+    color: $color-white;
+    border: $border-size solid $color-primary;
+    // float: right;
+    // margin-top: -460px;
+
+    &:not([disabled]) {
+        &:hover {
+            color: $color-white;
+            background-color: darken($color-primary, 10);
+            border-color: darken($color-primary, 10);
+        }
+
+        &:active {
+            background-color: lighten($color-primary, 18);
+            border-color: lighten($color-primary, 18);
+        }
+    }
+
+    &:disabled {
+        color: $color-neutral-5;
+        background-color: $color-neutral-2;
+        border-color: $color-neutral-2;
+    }
+}
+
 .secondary {
     background-color: $color-white;
     color: $color-primary;
@@ -117,6 +220,31 @@ $border-size: 2px;
     &:disabled {
         color: $color-neutral-5;
         background-color: transparent;
+        border-color: $color-neutral-2;
+    }
+}
+
+.delete {
+    background-color: $color-primary;
+    color: $color-white;
+    border: $border-size solid $color-primary;
+ 
+    &:not([disabled]) {
+        &:hover {
+            color: $color-white;
+            background-color: darken($color-primary, 10);
+            border-color: darken($color-primary, 10);
+        }
+
+        &:active {
+            background-color: lighten($color-primary, 18);
+            border-color: lighten($color-primary, 18);
+        }
+    }
+
+    &:disabled {
+        color: $color-neutral-5;
+        background-color: $color-neutral-2;
         border-color: $color-neutral-2;
     }
 }
