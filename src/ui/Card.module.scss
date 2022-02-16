@@ -14,62 +14,22 @@
     } 
 }
 
-// .latest {
-//     position: relative;
-//     width: 20%;
-//     margin-top: -420px;
-//     padding: 32px;
-//     background-color: $color-white;
-//     box-shadow: 0 4px 10px 0 rgba($color-black, 0.16);
-//     border-radius: 16px;
-//     float: right;
-
-//     // position: fixed;
-//     // position: relative;
-//     // margin-top: -1120px;
-//     // margin-left: 1000px;
-
-
-//     &:last-of-type {
-//         margin-bottom: 0;
-//     } 
-// }
-
-
 .latest {
   position: absolute;
-  // position: fixed;
-  // margin-top: -800px;
-
   margin-left: 920px;
   margin-top: 65px;
-
-  // margin-top: -1642px;
-  // margin-left: 902px;
   z-index: 0.1; 
-  // margin-top: -455px;
-
-  // position: static;
   width: 25%;
-  // margin-top: -1120px;
-  // margin-top: 0px;
   padding: 32px;
   background-color: $color-white;
   box-shadow: 0 4px 10px 0 rgba($color-black, 0.16);
   border-radius: 16px;
-  // float: right;
-
-  // &:last-of-type {
-  //     margin-bottom: 0;
-  // } 
 }
 
 table {
      width: 100%;
      height: 100%;
      position: relative;
-    // width: 800px;
-    // height: 200px;
     border-collapse: separate;
     border-spacing: 0 15px;
   }
@@ -83,88 +43,12 @@ th {
     text-align: left;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
-    // padding-right: 26px;
   }
-
-
-// .wspace{
-//   padding-right: 100px;
-// }
 
 .wgoal{
   padding-right: -100px;
   text-align: right;
 }
-
-  // tr:hover {background-color: coral;}
-
-
-  // td {
-  //   text-align: left;
-  //   border-bottom: 1px solid rgb(126, 0, 0);
-  //   // padding-bottom: 10px;
-  // }
-  
-  // td{
-  //   // display:block;
-  //   display:flex;
-  // }
-
-// tr {
-//    border-bottom:1px solid rgb(214, 48, 48);
-
-//   }
-
-// .hrline {
-//   width: 100%;
-//   color: rgb(253, 0, 0);
-
-// }
-
-// table tr:first-child{
-//       border-bottom:1px solid rgb(214, 48, 48);
-// }
-
-    
-// td {
-//     text-align: left;
-//   }
-
-     
-// tr {
-//     border-bottom: 1px solid black;
-// }
-
-// tr:first-child { 
-//   border-bottom: 1px solid #555;
-// }
-
-
-// hr.test {
-//     display: block;
-//     margin-top: 0.5em;
-//     margin-bottom: 0.5em;
-//     margin-left: auto;
-//     margin-right: auto;
-//     border-style: inset;
-//     border-width: 1px;
-//   }
-
-// hr {
-//   width: 100%;
-//   height: 0.5px;
-//   // margin-left: auto;
-//   // margin-right: auto;
-//   background-color:#666;
-//   // border: 0 none;
-//   // margin-top: 100px;
-//   // margin-bottom:100px;
-// }
-
-
-// tr.bordered {
-//     border-bottom: 1px solid #000;
-// }
 
 .inputtext{
   width: 100%;
@@ -181,7 +65,6 @@ th {
   padding: 32px;
   background-color: $color-white;
   box-shadow: 0 10px 10px 0 rgba($color-black, 0.16);
-  
   border-radius: 16px;
   z-index: 2; 
   margin-left: 270px;

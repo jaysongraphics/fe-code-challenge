@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
 import React from 'react';
-
 import {Suspense} from 'react';
 import logo from './logo.svg';
 import css from './App.module.scss';
-import Weight from './weight/Weight';
-import LatestReadings from './weight/LatestReadings';
-import OtherReadings from './weight/OtherReadings';
-import Card from "./ui/Card";
-import Button from "./ui/Button";
-
+import Weight from './Components/Weight';
 
 function App() {
 
@@ -38,8 +32,7 @@ function App() {
             </div>
             <footer className={css.footer}>
                 <small>
-                    {new Date().getFullYear()} &copy; Livongo. All rights
-                    reserved.
+                    {new Date().getFullYear()} &copy; Livongo. All rights reserved.
                 </small>
             </footer>
         </div>

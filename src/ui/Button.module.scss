@@ -228,6 +228,8 @@ $border-size: 2px;
     background-color: $color-primary;
     color: $color-white;
     border: $border-size solid $color-primary;
+    cursor: pointer;
+    margin-right: 10px;
  
     &:not([disabled]) {
         &:hover {

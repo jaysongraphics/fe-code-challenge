@@ -1,10 +1,9 @@
 import css from '../ui/Card.module.scss';
 import button from '../ui/Button.module.scss';
 import React from "react";
-import { useEffect, useState } from "react";
 
 
-const Modal = ({weightInfo, int, boolean, number, setInt, setNumber, setBoolean, postWeight, dateString, handleWdeight, error}) => {
+const Modal = ({number, setNumber, postWeight, handleWdeight, error}) => {
 
   return (
     <div>
@@ -17,7 +16,7 @@ const Modal = ({weightInfo, int, boolean, number, setInt, setNumber, setBoolean,
             <div>
                 <form onSubmit={postWeight}>
                     <h5>Weight</h5>
-                    <input style={{borderColor: error ? 'red' : 'black'}} className={css.inputtext} type="number" value={number}
+                    <input style={{borderColor: error ? 'red' : 'black'}} className={css.inputtext} value={number}
                        onChange={(e) => setNumber(e.target.value)}/> 
                     <br/>
                     <br/> 

@@ -1,11 +1,9 @@
-import css from '../ui/Card.module.scss';
 
 
 const LatestReadings = ({weightInfo}) => {
-       
-
+        
     if(weightInfo.length === 0){
-    return <></>
+        return <></>
     }
 
     const latestWeightData = weightInfo[weightInfo.length -1]
@@ -24,7 +22,7 @@ const LatestReadings = ({weightInfo}) => {
              <p>175 lb</p>
         </div>
     )
-}
+  }
 
 
 export default LatestReadings;
