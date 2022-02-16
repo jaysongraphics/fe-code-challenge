@@ -32,6 +32,7 @@ function App() {
                 <Suspense fallback={<div>Loading weight data...</div>}>
                     <Weight 
                          weightInfo={weightInfo}
+                         setWeightInfo={setWeightInfo}
                     />
                 </Suspense>
             </div>

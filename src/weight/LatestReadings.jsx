@@ -1,31 +1,24 @@
 import css from '../ui/Card.module.scss';
 
 
-const LatestReadings = ({weightInfo, int, boolean, number, setInt, setNumber, setBoolean, postWeight, dateString, latestWeight}) => {
-   
-    // const {dateTime, id, isIrregular, value} = latestWeight
+const LatestReadings = ({weightInfo}) => {
+       
 
-    // const {dateTime, id, isIrregular, value} = weightInfo
+    if(weightInfo.length === 0){
+    return <></>
+    }
 
-    // console.log(`${value} lb on ${dateTime}`);
-    // console.log(weightInfo);
-
-    const isRegular = weightInfo.map(latest => { 
-        const d = new Date();
-        const options = { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
-        const finalDate = d.toLocaleDateString('en-US', options);
-        return (
-                <p>{`${latest.value} lb on ${finalDate.last}`}</p>
-          )
-        }
-      )
+    const latestWeightData = weightInfo[weightInfo.length -1]
+    const d = new Date(latestWeightData.dateTime);
+    const options = { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+    const finalDate = d.toLocaleDateString('en-US', options);
+    const weightLb = parseFloat(latestWeightData.value).toFixed(1)
+    const isRegular = <p>{`${weightLb} lb on ${finalDate}`}</p>
 
     return(
         <div>
              <h3>Latest Readings</h3>
-                {/* <p>{`${value} lb on ${dateTime}`}</p> */}
-                {/* <p>{isRegular}</p> */}
-
+                {isRegular}
             <br/>
              <h3>Your Goal</h3>
              <p>175 lb</p>

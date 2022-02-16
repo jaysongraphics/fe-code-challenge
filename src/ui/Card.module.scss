@@ -38,22 +38,30 @@
 
 .latest {
   position: absolute;
-  margin-top: -1642px;
-  margin-left: 902px;
+  // position: fixed;
+  // margin-top: -800px;
 
+  margin-left: 920px;
+  margin-top: 65px;
+
+  // margin-top: -1642px;
+  // margin-left: 902px;
+  z-index: 0.1; 
+  // margin-top: -455px;
 
   // position: static;
   width: 25%;
   // margin-top: -1120px;
+  // margin-top: 0px;
   padding: 32px;
   background-color: $color-white;
   box-shadow: 0 4px 10px 0 rgba($color-black, 0.16);
   border-radius: 16px;
   // float: right;
 
-  &:last-of-type {
-      margin-bottom: 0;
-  } 
+  // &:last-of-type {
+  //     margin-bottom: 0;
+  // } 
 }
 
 table {
@@ -175,7 +183,7 @@ th {
   box-shadow: 0 10px 10px 0 rgba($color-black, 0.16);
   
   border-radius: 16px;
-  z-index: 1; 
+  z-index: 2; 
   margin-left: 270px;
 
   &:last-of-type {

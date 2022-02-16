@@ -7,91 +7,192 @@ import css from '../ui/Card.module.scss';
 import button from '../ui/Button.module.scss';
 import { useEffect, useState } from "react";
 
-const Weight = ({weightInfo}) => {
+const Weight = ({weightInfo, setWeightInfo}) => {
   const weightApi = 'http://localhost:9000/api/weights'
 
+  // const id, datTime, value] = weightInfo
+  // console.log(id);
+
   const [addWeight, setAddWeight] = useState(false);
-
-  const [int, setInt] = useState()
+  const [int, setInt] = useState(0)
   const [number, setNumber] = useState()
-  // const [string, setString] = useState("")
+  const [string, setString] = useState('')
   const [boolean, setBoolean] = useState(false)
-  const [latestWeight, setLatestWeight] = useState("")
+  const [latestWeight, setLatestWeight] = useState()
 
+  const [regWeight, setregWeight] = useState('')
+
+  const [error, setError] = useState('')
 
   // function removeId(id){
   //   const weightArray = weightInfo.filter(wightid => wightid.id !== id)
+  //   // console.log(weightArray);
+  //   return weightArray;
   // }
   
+  // console.log(removeId());
 
   const removeWeight = (id) => {
+    const t = weightInfo.filter(idWeight => idWeight.id !== id)
     fetch(`http://localhost:9000/api/weights/${id}`, {
           method: 'DELETE'
       })
-        // removeWeight(id)
-        console.log(id);
+      .then(res => res.json())
+      .then(data => {setWeightInfo(t)}) 
+      //  setNumber('')
 }
 
-  const weightValue = weightInfo.map(weightdetail => { 
-    return (
-            <p>{parseFloat(weightdetail.value).toFixed(1)}</p>
+  const filterData = weightInfo.filter(weight => {
+    if(Math.abs(175 - weight.value) >= 50){
+  } else {
+    return weight;
+   }
+  }
+)
+
+  const weightValue = filterData.map(weightdetail => { 
+    const reg = weightdetail.isIrregular
+    // if(reg === false){
+      return (
+        <p>{parseFloat(weightdetail.value).toFixed(1)}</p>
       )
+    // } else if(reg === true){
+    //     return null;
+    // } 
+    // return (
+    //         <p>{parseFloat(weightdetail.value).toFixed(1)}</p>
+    //   )
     }
   )
 
-  const dateTime = weightInfo.map(weightdetail =>  {
+  const goalDelta = filterData.map(weightdetail => { 
+    const reg = weightdetail.isIrregular
+    const num = parseFloat(weightdetail.value).toFixed(1)
+    const goal = 175
+    const operation = num - goal
+    const delta = parseFloat(operation).toFixed(1)
+    // if(reg === false){
+      return (
+        <p>{delta}</p>
+      )
+    // } else if(reg === true){
+    //     return null;
+    // } 
+    // return (
+    //      <p>{delta}</p>
+    //  )
+    }
+  )
+
+
+  // const isRegular = weightInfo.map(goal => { 
+  //   const reg = goal.isIrregular
+  //   // const boolean = goal.isIrregular
+  //   // console.log(boolean);
+  //   if(reg === false){
+  //     return (
+  //       <p>{goal.isIrregular}</p>
+  //     )
+  //   } else if(reg === true){
+  //       return null;
+  //   } 
+  //   // return (
+  //   //         <p>{goal.isIrregular}</p>
+  //   //   )
+  //   }
+  // )
+
+  const dateTime = filterData.map(weightdetail =>  {
+      const reg = weightdetail.isIrregular
       const d = new Date(weightdetail.dateTime);
       const options = { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
       const finalDate = d.toLocaleDateString('en-US', options);
       // let t = new Date(weightdetail.dateTime).toLocaleTimeString();
       // console.log(d.toLocaleDateString('en-US', options) + ' ' + t);  
-      // console.log(d.toLocaleDateString('en-US', options));  
-      return (
-          <p><button onClick={removeWeight} className={button.delete}>x</button>{finalDate}</p>
-     )
+      // console.log(d.toLocaleDateString('en-US', options)); 
+      // if(reg === false){
+        return (
+          <p><button onClick={()=> removeWeight(weightdetail.id)} className={button.delete}>x</button>{finalDate}</p>
+        )
+      // } else if(reg === true){
+      //     return null;
+      // } 
+    //   return (
+    //       <p><button onClick={removeWeight} className={button.delete}>x</button>  {finalDate}</p>
+    //  )
   }
 )
 
-
-const isRegular = weightInfo.map(goal => { 
-  return (
-          <p>{goal.isIrregular}</p>
-    )
-  }
-)
 
   const handleWdeight = () => {
-    setAddWeight((addWeight)=> !addWeight)
+      setAddWeight((addWeight)=> !addWeight)
     // console.log(addWeight)
   }
 
-  const dateString = () => {
-    const d = new Date();
-    const options = { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
-    const finalDate = d.toLocaleDateString('en-US', options);
-    return finalDate;
-  }
-  
+// const dateString = () => {
+//   const d = new Date();
+//   const options = { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+//   const finalDate = d.toLocaleDateString('en-US', options);
+//   return finalDate;
+// }
+
+
+// console.log(dateString());
+
+const dateString = new Date();
+
     const postWeight = (e) => {
       e.preventDefault()
-      fetch(weightApi, {
+      if(!number){
+        setError('Please enter your weight.')
+      } else {
+           
+      fetch(weightApi,{
         method: 'POST',
         headers: {'Content-Type': 'application/json',
     },
         body: JSON.stringify({ 
             "id": int,
-            "value": number,
-            "dateTime": dateString(),
+            "value": parseInt(number),
+            "dateTime": dateString,
             "isIrregular": boolean
          }),
     })  .then(res => res.json())
-        .then(data => setLatestWeight(data)) 
-         setNumber('')
-        // .then(data => console.log(data)) 
+        .then(data => setWeightInfo([...weightInfo, data])) 
+          setNumber('')
+          handleWdeight()
+
+        // .then(data => console.log(data.error)) 
+      //   .then((data) => {
+      //     if(data.error) {
+      //       setError(data.error);
+      //       setNumber('')
+      //        // .then(data => console.log(data)) 
+      //     }
+      //   }
+      // )
+     } 
     }
+    
+
 
     return (
          <div>
+           <div className={css.latest}>
+                    <button className={button.root} onClick={handleWdeight}>+ Add Reading</button>
+                    <LatestReadings 
+                        weightInfo={weightInfo} 
+                        int={int} 
+                        boolean={boolean} 
+                        number={number} 
+                        setInt={setInt} 
+                        setNumber={setNumber}
+                        setBoolean={setBoolean}
+                        postWeight={postWeight}
+                        // dateString={dateString}
+                        latestWeight={latestWeight}
+                      />
+                </div>
             <h1>Weight</h1>
             <br/>
             {addWeight && <Modal 
@@ -103,8 +204,9 @@ const isRegular = weightInfo.map(goal => {
                   setNumber={setNumber}
                   setBoolean={setBoolean}
                   postWeight={postWeight}
-                  dateString={dateString}
+                  // dateString={dateString}
                   handleWdeight={handleWdeight}
+                  error={error}
                   />}
             <div className={css.root}>
                 <h2>Your weight readings</h2>
@@ -122,31 +224,19 @@ const isRegular = weightInfo.map(goal => {
                       <tr>
                         <td>{dateTime}</td>
                         <td>{weightValue}</td>
-                        <td className={css.wgoal}>{isRegular}</td>
+                        <td className={css.wgoal}>{goalDelta}</td>                         
                       </tr>
                     </tbody>
                   </table>
             </div> 
-
-               <div className={css.latest}>
-                    <button className={button.root} onClick={handleWdeight}>+ Add Reading</button>
-                    <LatestReadings 
-                        weightInfo={weightInfo} 
-                        int={int} 
-                        boolean={boolean} 
-                        number={number} 
-                        setInt={setInt} 
-                        setNumber={setNumber}
-                        setBoolean={setBoolean}
-                        postWeight={postWeight}
-                        dateString={dateString}
-                        latestWeight={latestWeight}
-                      />
-                </div>
-            <OtherReadings />
+            <OtherReadings 
+                weightInfo={weightInfo}
+                removeWeight={removeWeight}
+            />
         </div>
     )
-};
+}
+
 
 
 export default Weight;
