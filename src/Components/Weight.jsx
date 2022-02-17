@@ -4,14 +4,14 @@ import OtherReadings from './OtherReadings';
 import Modal from './Modal';
 import css from '../ui/Card.module.scss';
 import button from '../ui/Button.module.scss';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Weight = ({weightInfo, setWeightInfo}) => {
     const weightApi = 'http://localhost:9000/api/weights'
     const [addWeight, setAddWeight] = useState();
     const [int, setInt] = useState(0)
     const [number, setNumber] = useState()
-    const [boolean, setBoolean] = useState(false)
+    const [boolean, setBoolean] = useState(null)
     const [error, setError] = useState('')
 
   const removeWeight = (id) => {
@@ -31,8 +31,8 @@ const Weight = ({weightInfo, setWeightInfo}) => {
     } else {
         return weight;
     }
-  }
-)
+   }
+  )
 
   const weightValue = filterData.map(weightdetail => { 
       return (
@@ -47,7 +47,7 @@ const Weight = ({weightInfo, setWeightInfo}) => {
     const operation = num - goal
     const delta = parseFloat(operation).toFixed(1)
       return (
-        <p>{delta}</p>
+        <p style={{color: delta > 0 ? 'red' : 'green'}}>{delta > 0 ? "+"+delta : delta}</p>
       )
     }
   )
@@ -142,6 +142,7 @@ const Weight = ({weightInfo, setWeightInfo}) => {
 }
 
 // nvm use v12.4.0
+//nvm use v17.4.0
 
 export default Weight;
 

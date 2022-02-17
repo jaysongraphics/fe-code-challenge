@@ -36,7 +36,7 @@ const OtherReadings = ({weightInfo, removeWeight}) => {
     const operation = num - goal
     const delta = parseFloat(operation).toFixed(1)
      return (
-        <p>{delta}</p>
+        <p style={{color: delta > 0 ? 'red' : 'green'}}>{delta > 0 ? "+"+delta : delta}</p>
      )
     }
   )
